@@ -4,60 +4,198 @@
   <meta charset="UTF-8">
   <title>Paul Tran – Engineering Portfolio</title>
   <style>
-    body { font-family: Arial; margin: 40px; max-width: 900px; }
-    h1 { font-size: 36px; }
-    .section { margin-top: 40px; }
-    .project { margin-bottom: 25px; }
-    .project-title { font-size: 22px; font-weight: bold; }
-    .tags { color: #555; font-size: 14px; }
-    a { color: #0077ff; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      color: #222;
+    }
+    header {
+      background: #0d47a1;
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 42px;
+    }
+    header p {
+      margin: 8px 0;
+      font-size: 18px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+      border-left: 6px solid #0d47a1;
+      padding-left: 10px;
+      margin-top: 40px;
+      font-size: 28px;
+    }
+    .section {
+      margin-top: 20px;
+    }
+    .item {
+      margin-bottom: 25px;
+    }
+    .item-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .item-sub {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    ul {
+      margin-top: 10px;
+    }
+    a {
+      color: #0d47a1;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
+
 <body>
 
-<h1>Paul Tran</h1>
-<p>Mechanical Engineering & Data Science @ UC Berkeley</p>
-<p>Email: your.email@berkeley.edu • GitHub: <a href="https://github.com/YOURUSERNAME">YOURUSERNAME</a></p>
+<header>
+  <h1>Paul Tran</h1>
+  <p>Mechanical Engineering & Data Science @ UC Berkeley</p>
+  <p>
+    <a href="mailto:paul.trann@berkeley.edu" style="color:white;">paul.trann@berkeley.edu</a> |
+    <a href="https://www.linkedin.com/in/paul-nk-tran/" style="color:white;">LinkedIn</a> |
+  </p>
+</header>
 
-<div class="section">
-  <h2>About Me</h2>
-  <p>I’m a mechanical design engineer and data science student focused on robotics, manufacturing, and computational engineering. I build systems that combine hardware, software, and data.</p>
-</div>
+<div class="container">
 
-<div class="section">
-  <h2>Projects</h2>
-
-  <div class="project">
-    <div class="project-title">Motor-Driven Winch System (ME CENG 102B)</div>
-    <div class="tags">CAD • FEA • Controls • Timing Belts</div>
-    <p>Designed and analyzed a winch system including bearing load calculations, axial preload, and belt-driven torque transfer. Implemented static equilibrium analysis and produced a cross-sectional assembly.</p>
-    <a href="https://github.com/YOURUSERNAME/winch-project">View Code / Files</a>
+  <!-- EDUCATION -->
+  <h2>Education</h2>
+  <div class="section">
+    <div class="item">
+      <div class="item-title">University of California, Berkeley</div>
+      <div class="item-sub">B.S. Mechanical Engineering, Minor in Data Science — GPA: 3.68</div>
+      <ul>
+        <li>Engineering Statics, Dynamics, Heat Transfer, Thermodynamics</li>
+        <li>Fluid Mechanics, Dynamic Systems & Feedback</li>
+        <li>Manufacturing & Design, Engineering Materials</li>
+        <li>Electronics for IoT, Product Design, 3D Modeling</li>
+        <li>Principles & Techniques of Data Science</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="project">
-    <div class="project-title">Data Pipeline for Manufacturing Analytics</div>
-    <div class="tags">Python • Pandas • SQL • Visualization</div>
-    <p>Built a real-time analytics pipeline to monitor machine performance and detect anomalies using statistical models.</p>
-    <a href="https://github.com/YOURUSERNAME/manufacturing-analytics">View Code</a>
-  </div>
-
-  <div class="project">
-    <div class="project-title">Robotics Control Simulation</div>
-    <div class="tags">MATLAB • Simulink • Control Theory</div>
-    <p>Simulated PID control loops for robotic actuators and validated stability using root-locus and Bode analysis.</p>
-    <a href="https://github.com/YOURUSERNAME/robotics-control">View Code</a>
-  </div>
-
-</div>
-
-<div class="section">
+  <!-- SKILLS -->
   <h2>Skills</h2>
-  <ul>
-    <li>Mechanical Design: SolidWorks, GD&T, DFM/DFA</li>
-    <li>Manufacturing: CNC, injection molding, metrology</li>
-    <li>Software: Python, MATLAB, SQL, Git</li>
-    <li>Data Science: Pandas, NumPy, ML basics</li>
-  </ul>
+  <div class="section">
+    <ul>
+      <li><strong>Engineering:</strong> 3D Printing, Laser Cutting, Soldering, CNC, GD&T, FEA, DFM/DFA, Waterjet, Lathe</li>
+      <li><strong>Software:</strong> SolidWorks, MATLAB, Python, SQL, AutoCAD, CATIA, ANSYS, Excel, DAX, Smartsheet</li>
+      <li><strong>Technical Documentation:</strong> Tooling Design, Lean Six Sigma, Manufacturing Analysis</li>
+    </ul>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <h2>Work Experience</h2>
+  <div class="section">
+
+    <div class="item">
+      <div class="item-title">Niagara Bottling — Product Engineer Intern</div>
+      <div class="item-sub">June 2026 – September 2026</div>
+      <ul>
+        <li>Performed market study of 0.5L bottled water products, analyzing top load strength and bottle weight.</li>
+        <li>Built interactive Power BI dashboards for competitor benchmarking and engineering data visualization.</li>
+        <li>Supported product lifecycle management and cross-functional engineering collaboration.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-title">Abbott — Manufacturing Engineer Intern</div>
+      <div class="item-sub">January 2026 – June 2026</div>
+      <ul>
+        <li>Developed Power BI dashboards and Power Apps inventory system improving warehouse visibility.</li>
+        <li>Diagnosed manufacturing issues and validated corrective actions for Alinity-I production.</li>
+        <li>Conducted root cause investigations and collaborated with Quality, Ops, Engineering, Supply Chain.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-title">LensAI — Product Design Engineer Intern</div>
+      <div class="item-sub">September 2025 – November 2025</div>
+      <ul>
+        <li>Designed smart glasses frame integrating PCB, battery, ESP, camera, and bone-conduction speaker.</li>
+        <li>Engineered enclosures, routing channels, and vibration isolation features.</li>
+        <li>Collaborated with electrical teams to align mechanical constraints with user comfort.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-title">Alaska Airlines — Strategy Consultant</div>
+      <div class="item-sub">February 2025 – May 2025</div>
+      <ul>
+        <li>Evaluated maintenance control systems using CSAT insights and COTS vs. in-house software analysis.</li>
+        <li>Delivered strategic roadmap recommending future technology investments including AI integration.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- PROJECTS -->
+  <h2>Engineering Projects</h2>
+  <div class="section">
+
+    <div class="item">
+      <div class="item-title">Automated Snack Dispenser — Project Lead</div>
+      <div class="item-sub">Embedded Systems, IoT, Python</div>
+      <ul>
+        <li>Built IoT-enabled dispenser using sensors + actuators for precise automated control.</li>
+        <li>Designed wide-range motion mechanism for accurate serving portions.</li>
+        <li>Programmed ESP32 microcontroller for wireless automation.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-title">iPhone LiDAR Mount — Project Lead</div>
+      <div class="item-sub">Autodesk CAD, CNC, Waterjet, 3D Printing</div>
+      <ul>
+        <li>Designed mount enabling LiDAR-based measurement of organic objects.</li>
+        <li>Fabricated components using CNC, waterjet, and 3D printing.</li>
+        <li>Engineered bearing attachment, counterweight, and smooth rotational motion.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-title">Arcade Machine — Mechanical Lead</div>
+      <div class="item-sub">SolidWorks, 3D Printing, Embedded Systems</div>
+      <ul>
+        <li>Designed gantry system with 5 belts and 4 rails for motion control.</li>
+        <li>Fabricated components using 3D printing and laser cutting.</li>
+        <li>Programmed and calibrated 5 servo motors with optimized voltage control.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ABOUT -->
+  <h2>About Me</h2>
+  <div class="section">
+    <ul>
+      <li><strong>Awards:</strong> President's List, Dean's List, PTK Honors, UC Berkeley Transfer Scholarship</li>
+      <li><strong>Extracurriculars:</strong> PTK Honors Society, Theta Tau, Core Consulting Group</li>
+      <li><strong>Interests:</strong> Vlogging, Basketball, Gym, Food, 3D Printing, Legos, Cooking, Poker, Marathon</li>
+    </ul>
+  </div>
+
 </div>
 
 </body>
