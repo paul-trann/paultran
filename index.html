@@ -3,27 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>Paul Tran – Engineering Portfolio</title>
+
+  <!-- Smooth Scrolling -->
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       background: #f5f5f5;
       color: #222;
+      opacity: 0;
+      animation: fadeIn 1.2s ease-in forwards;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Sticky Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background:#0d47a1;
+      padding:15px;
+      text-align:center;
+      box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    nav a {
+      color:white;
+      margin:0 20px;
+      font-size:18px;
+      text-decoration:none;
+      transition: box-shadow 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    nav a:hover {
+      text-decoration:underline;
+      text-shadow:0 0 8px rgba(255,255,255,0.8);
+      box-shadow:0 0 12px rgba(255,255,255,0.6);
+    }
+
     header {
       background: #0d47a1;
       color: white;
       padding: 40px;
       text-align: center;
     }
+
     header h1 {
       margin: 0;
       font-size: 42px;
     }
+
     header p {
       margin: 8px 0;
       font-size: 18px;
     }
+
     .container {
       max-width: 900px;
       margin: 40px auto;
@@ -31,172 +73,418 @@
       padding: 40px;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease-out;
     }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     h2 {
       border-left: 6px solid #0d47a1;
       padding-left: 10px;
       margin-top: 40px;
       font-size: 28px;
     }
+
     .section {
       margin-top: 20px;
     }
+
     .item {
       margin-bottom: 25px;
     }
+
     .item-title {
       font-size: 20px;
       font-weight: bold;
     }
+
     .item-sub {
       font-size: 15px;
       color: #555;
       margin-bottom: 8px;
     }
+
     ul {
       margin-top: 10px;
     }
-    a {
+
+    /* Photo Gallery */
+    .gallery {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 260px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      animation: fadeInUp 1s ease-out;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      box-shadow:0 0 18px rgba(13,71,161,0.8);
+      transform:translateY(-4px);
+    }
+
+    /* Project Cards */
+    .project-card {
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease-out;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      box-shadow:0 0 18px rgba(13,71,161,0.6);
+      transform:translateY(-4px);
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 22px;
       color: #0d47a1;
-      text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .project-card p {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #444;
     }
+
+    .project-card a {
+      display:inline-block;
+      margin-top:10px;
+      padding:10px 15px;
+      background:#0d47a1;
+      color:white;
+      border-radius:6px;
+      text-decoration:none;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .project-card a:hover {
+      box-shadow:0 0 14px rgba(13,71,161,0.8);
+      transform:translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background:#0d47a1;
+      color:white;
+      text-align:center;
+      padding:25px;
+      margin-top:40px;
+    }
+
+    footer a {
+      color:white;
+      margin:0 15px;
+      font-size:22px;
+      text-decoration:none;
+      transition: text-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    footer a:hover {
+      opacity:0.9;
+      text-shadow:0 0 10px rgba(255,255,255,0.9);
+      transform:translateY(-2px);
+    }
+
+    /* Hero responsiveness + glow */
+    .hero {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:60px;
+      background:white;
+      flex-wrap:wrap;
+    }
+
+    .hero-text {
+      max-width:450px;
+      margin-right:40px;
+      margin-bottom:20px;
+    }
+
+    .hero-text h1 {
+      font-size:48px;
+      margin:0;
+      color:#0d47a1;
+    }
+
+    .hero-text h2 {
+      font-size:32px;
+      margin:10px 0;
+      border-left:none;
+      padding-left:0;
+    }
+
+    .hero-text p {
+      font-size:20px;
+      color:#333;
+      margin:20px 0;
+    }
+
+    .hero-text a {
+      padding:12px 20px;
+      background:#0d47a1;
+      color:white;
+      text-decoration:none;
+      border-radius:6px;
+      font-size:18px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .hero-text a:hover {
+      box-shadow:0 0 18px rgba(13,71,161,0.8);
+      transform:translateY(-2px);
+    }
+
+    .hero img {
+      width:320px;
+      height:auto;
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .hero img:hover {
+      box-shadow:0 0 18px rgba(13,71,161,0.8);
+      transform:translateY(-4px);
+    }
+
+    /* Mobile Responsive Layout */
+    @media (max-width: 768px) {
+      .hero {
+        padding:30px 20px;
+      }
+
+      .hero-text {
+        margin-right:0;
+        text-align:center;
+      }
+
+      .hero-text h1 {
+        font-size:36px;
+      }
+
+      .hero-text h2 {
+        font-size:26px;
+      }
+
+      .hero-text p {
+        font-size:18px;
+      }
+
+      nav a {
+        display:inline-block;
+        margin:0 10px;
+        font-size:16px;
+      }
+
+      .container {
+        margin:20px auto;
+        padding:20px;
+      }
+
+      h2 {
+        font-size:24px;
+      }
+
+      .gallery {
+        justify-content:center;
+      }
+
+      .gallery img {
+        width:200px;
+      }
+
+      .project-card {
+        padding:15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-text h1 {
+        font-size:30px;
+      }
+
+      .hero-text h2 {
+        font-size:22px;
+      }
+
+      .hero-text p {
+        font-size:16px;
+      }
+
+      nav {
+        padding:10px;
+      }
+
+      nav a {
+        display:block;
+        margin:6px 0;
+      }
+
+      .gallery img {
+        width:160px;
+      }
+    }
+
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Paul Tran</h1>
-  <p>Mechanical Engineering & Data Science @ UC Berkeley</p>
-  <p>
-    <a href="mailto:paul.trann@berkeley.edu" style="color:white;">paul.trann@berkeley.edu</a> |
-    <a href="https://www.linkedin.com/in/paul-nk-tran/" style="color:white;">LinkedIn</a> |
-  </p>
-</header>
+  <!-- CONFETTI UC BERKELEY LOGOS -->
+  <script>
+    function launchConfetti() {
+      const count = 40;
+      for (let i = 0; i < count; i++) {
+        let img = document.createElement("img");
+        img.src = "https://upload.wikimedia.org/wikipedia/commons/4/4a/UC_Berkeley_seal.svg";
+        img.style.position = "fixed";
+        img.style.width = "40px";
+        img.style.left = Math.random() * window.innerWidth + "px";
+        img.style.top = "-60px";
+        img.style.opacity = "0.9";
+        img.style.animation = "fall 2.5s linear forwards";
+        document.body.appendChild(img);
+      }
+    }
 
-<div class="container">
+    window.onload = launchConfetti;
 
-  <!-- EDUCATION -->
-  <h2>Education</h2>
-  <div class="section">
-    <div class="item">
-      <div class="item-title">University of California, Berkeley</div>
-      <div class="item-sub">B.S. Mechanical Engineering, Minor in Data Science — GPA: 3.68</div>
-      <ul>
-        <li>Engineering Statics, Dynamics, Heat Transfer, Thermodynamics</li>
-        <li>Fluid Mechanics, Dynamic Systems & Feedback</li>
-        <li>Manufacturing & Design, Engineering Materials</li>
-        <li>Electronics for IoT, Product Design, 3D Modeling</li>
-        <li>Principles & Techniques of Data Science</li>
-      </ul>
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes fall {
+        to { transform: translateY(120vh) rotate(360deg); opacity:0; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Engineering Portfolio</h1>
+      <h2>Paul Tran</h2>
+      <p>
+        Mechanical Engineer & Data Science at UC Berkeley
+      </p>
+
+      <!-- Resume Download Button -->
+      <a href="resume.pdf">
+        Download Resume (PDF)
+      </a>
+    </div>
+
+    <div>
+      <img src="add picture" alt="Paul Tran">
     </div>
   </div>
 
-  <!-- SKILLS -->
-  <h2>Skills</h2>
-  <div class="section">
+  <!-- STICKY NAVIGATION BAR -->
+  <nav>
+    <a href="#my-life">My Life</a>
+    <a href="#about-me">About Me</a>
+    <a href="#resume">Resume</a>
+    <a href="#engineering-projects">Engineering Projects</a>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Paul Tran</h1>
+    <p>Mechanical Engineering & Data Science @ UC Berkeley</p>
+    <p>
+      <a href="mailto:paul.trann@berkeley.edu" style="color:white;">paul.trann@berkeley.edu</a>
+    </p>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+
+    <!-- RESUME SECTION -->
+    <h2 id="resume">Resume</h2>
+
+    <!-- ABOUT ME -->
+    <h2 id="about-me">About Me</h2>
+    <p>
+      First-generation student studying Mechanical Engineering & Data Science at UC Berkeley.
+      Passionate about engineering design, prototyping, and building meaningful products.
+    </p>
+
+    <!-- EDUCATION -->
+    <h2>Education</h2>
+    <div class="section">
+      <div class="item">
+        <div class="item-title">University of California, Berkeley</div>
+        <div class="item-sub">B.S. Mechanical Engineering, Minor in Data Science — GPA: 3.68</div>
+      </div>
+    </div>
+
+    <!-- ENGINEERING PROJECTS -->
+    <h2 id="engineering-projects">Engineering Projects</h2>
+
+    <div class="project-card">
+      <h3>Automated Snack Dispenser</h3>
+      <p>IoT-enabled dispenser using sensors + actuators for precise automated control.</p>
+      <a href="projects/snack-dispenser.html">View Full Project</a>
+    </div>
+
+    <div class="project-card">
+      <h3>iPhone LiDAR Mount</h3>
+      <p>Designed and fabricated a LiDAR-enabled measurement mount using CNC, waterjet, and 3D printing.</p>
+      <a href="projects/lidar-mount.html">View Full Project</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Arcade Machine</h3>
+      <p>Designed gantry system with 5 belts and 4 rails; programmed servo motors for motion control.</p>
+      <a href="projects/arcade-machine.html">View Full Project</a>
+    </div>
+
+    <!-- MY LIFE -->
+    <h2 id="my-life">My Life</h2>
+
+    <div class="gallery">
+      <img src="add picture 1" alt="My Life 1">
+      <img src="add picture 2" alt="My Life 2">
+      <img src="add picture 3" alt="My Life 3">
+    </div>
+
     <ul>
-      <li><strong>Engineering:</strong> 3D Printing, Laser Cutting, Soldering, CNC, GD&T, FEA, DFM/DFA, Waterjet, Lathe</li>
-      <li><strong>Software:</strong> SolidWorks, MATLAB, Python, SQL, AutoCAD, CATIA, ANSYS, Excel, DAX, Smartsheet</li>
-      <li><strong>Technical Documentation:</strong> Tooling Design, Lean Six Sigma, Manufacturing Analysis</li>
+      <li>Vlogging</li>
+      <li>Basketball</li>
+      <li>Gym</li>
+      <li>Food</li>
+      <li>3D Printing</li>
+      <li>Legos</li>
+      <li>Cooking</li>
+      <li>Poker</li>
+      <li>Marathon</li>
     </ul>
-  </div>
-
-  <!-- EXPERIENCE -->
-  <h2>Work Experience</h2>
-  <div class="section">
-
-    <div class="item">
-      <div class="item-title">Niagara Bottling — Product Engineer Intern</div>
-      <div class="item-sub">June 2026 – September 2026</div>
-      <ul>
-        <li>Performed market study of 0.5L bottled water products, analyzing top load strength and bottle weight.</li>
-        <li>Built interactive Power BI dashboards for competitor benchmarking and engineering data visualization.</li>
-        <li>Supported product lifecycle management and cross-functional engineering collaboration.</li>
-      </ul>
-    </div>
-
-    <div class="item">
-      <div class="item-title">Abbott — Manufacturing Engineer Intern</div>
-      <div class="item-sub">January 2026 – June 2026</div>
-      <ul>
-        <li>Developed Power BI dashboards and Power Apps inventory system improving warehouse visibility.</li>
-        <li>Diagnosed manufacturing issues and validated corrective actions for Alinity-I production.</li>
-        <li>Conducted root cause investigations and collaborated with Quality, Ops, Engineering, Supply Chain.</li>
-      </ul>
-    </div>
-
-    <div class="item">
-      <div class="item-title">LensAI — Product Design Engineer Intern</div>
-      <div class="item-sub">September 2025 – November 2025</div>
-      <ul>
-        <li>Designed smart glasses frame integrating PCB, battery, ESP, camera, and bone-conduction speaker.</li>
-        <li>Engineered enclosures, routing channels, and vibration isolation features.</li>
-        <li>Collaborated with electrical teams to align mechanical constraints with user comfort.</li>
-      </ul>
-    </div>
-
-    <div class="item">
-      <div class="item-title">Alaska Airlines — Strategy Consultant</div>
-      <div class="item-sub">February 2025 – May 2025</div>
-      <ul>
-        <li>Evaluated maintenance control systems using CSAT insights and COTS vs. in-house software analysis.</li>
-        <li>Delivered strategic roadmap recommending future technology investments including AI integration.</li>
-      </ul>
-    </div>
 
   </div>
 
-  <!-- PROJECTS -->
-  <h2>Engineering Projects</h2>
-  <div class="section">
-
-    <div class="item">
-      <div class="item-title">Automated Snack Dispenser — Project Lead</div>
-      <div class="item-sub">Embedded Systems, IoT, Python</div>
-      <ul>
-        <li>Built IoT-enabled dispenser using sensors + actuators for precise automated control.</li>
-        <li>Designed wide-range motion mechanism for accurate serving portions.</li>
-        <li>Programmed ESP32 microcontroller for wireless automation.</li>
-      </ul>
-    </div>
-
-    <div class="item">
-      <div class="item-title">iPhone LiDAR Mount — Project Lead</div>
-      <div class="item-sub">Autodesk CAD, CNC, Waterjet, 3D Printing</div>
-      <ul>
-        <li>Designed mount enabling LiDAR-based measurement of organic objects.</li>
-        <li>Fabricated components using CNC, waterjet, and 3D printing.</li>
-        <li>Engineered bearing attachment, counterweight, and smooth rotational motion.</li>
-      </ul>
-    </div>
-
-    <div class="item">
-      <div class="item-title">Arcade Machine — Mechanical Lead</div>
-      <div class="item-sub">SolidWorks, 3D Printing, Embedded Systems</div>
-      <ul>
-        <li>Designed gantry system with 5 belts and 4 rails for motion control.</li>
-        <li>Fabricated components using 3D printing and laser cutting.</li>
-        <li>Programmed and calibrated 5 servo motors with optimized voltage control.</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- ABOUT -->
-  <h2>About Me</h2>
-  <div class="section">
-    <ul>
-      <li><strong>Awards:</strong> President's List, Dean's List, PTK Honors, UC Berkeley Transfer Scholarship</li>
-      <li><strong>Extracurriculars:</strong> PTK Honors Society, Theta Tau, Core Consulting Group</li>
-      <li><strong>Interests:</strong> Vlogging, Basketball, Gym, Food, 3D Printing, Legos, Cooking, Poker, Marathon</li>
-    </ul>
-  </div>
-
-</div>
+  <!-- FOOTER -->
+  <footer>
+    <a href="mailto:paul.trann@berkeley.edu">📧</a>
+    <a href="https://www.linkedin.com/in/paul-nk-tran/">🔗</a>
+    <a href="https://www.tiktok.com/">🎵</a>
+    <a href="https://github.com/paul-trann">💻</a>
+    <p style="margin-top:10px;">© 2026 Paul Tran</p>
+  </footer>
 
 </body>
 </html>
