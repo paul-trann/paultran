@@ -15,15 +15,31 @@
       opacity: 0;
       animation: fadeIn 1.2s ease-in forwards;
     }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* HERO FIX — THIS WAS MISSING */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 60px;
+      background: white;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 450px;
+    }
+
     .hero-img {
-      width: 320px;        /* controls size */
-      max-width: 100%;     /* prevents overflow */
-      height: auto;        /* keeps proportions */
+      width: 320px;
+      max-width: 100%;
+      height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     /* Sticky Navbar */
     nav {
@@ -138,19 +154,28 @@
 
 <body>
   
-  <!-- CONFETTI UC BERKELEY LOGOS -->
+  <!-- CONFETTI UC BERKELEY LOGOS — FIXED & SCATTERED -->
   <script>
     function launchConfetti() {
-      const count = 40;
+      const count = 60;
       for (let i = 0; i < count; i++) {
         let img = document.createElement("img");
-        img.src = "berkeley seal image.png";
+        img.src = "berkeley seal image.png"; // your uploaded file
         img.style.position = "fixed";
         img.style.width = "40px";
+
         img.style.left = Math.random() * window.innerWidth + "px";
-        img.style.top = "-60px";
+        img.style.top = (Math.random() * -300) + "px";
+
         img.style.opacity = "0.9";
-        img.style.animation = "fall 2.5s linear forwards";
+
+        const duration = 2 + Math.random() * 3;
+        const rotate = Math.random() * 720;
+
+        img.style.animation = `fall ${duration}s linear forwards`;
+
+        img.dataset.rotate = rotate;
+
         document.body.appendChild(img);
       }
     }
@@ -160,13 +185,16 @@
     const style = document.createElement("style");
     style.innerHTML = `
       @keyframes fall {
-        to { transform: translateY(120vh) rotate(360deg); opacity:0; }
+        to {
+          transform: translateY(120vh) rotate(360deg);
+          opacity: 0;
+        }
       }
     `;
     document.head.appendChild(style);
   </script>
   
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION (FIXED) -->
 <div class="hero">
 
   <!-- LEFT SIDE: IMAGE -->
