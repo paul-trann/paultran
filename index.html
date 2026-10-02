@@ -6,10 +6,7 @@
 
   <!-- Smooth Scrolling -->
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -19,10 +16,7 @@
       animation: fadeIn 1.2s ease-in forwards;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     /* Sticky Navbar */
     nav {
@@ -56,15 +50,8 @@
       text-align: center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 42px;
-    }
-
-    header p {
-      margin: 8px 0;
-      font-size: 18px;
-    }
+    header h1 { margin: 0; font-size: 42px; }
+    header p { margin: 8px 0; font-size: 18px; }
 
     .container {
       max-width: 900px;
@@ -88,29 +75,6 @@
       font-size: 28px;
     }
 
-    .section {
-      margin-top: 20px;
-    }
-
-    .item {
-      margin-bottom: 25px;
-    }
-
-    .item-title {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .item-sub {
-      font-size: 15px;
-      color: #555;
-      margin-bottom: 8px;
-    }
-
-    ul {
-      margin-top: 10px;
-    }
-
     /* Photo Gallery */
     .gallery {
       display: flex;
@@ -124,7 +88,6 @@
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      animation: fadeInUp 1s ease-out;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
@@ -140,7 +103,6 @@
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       margin-bottom: 20px;
-      animation: fadeInUp 1s ease-out;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
@@ -149,35 +111,6 @@
       transform:translateY(-4px);
     }
 
-    .project-card h3 {
-      margin: 0;
-      font-size: 22px;
-      color: #0d47a1;
-    }
-
-    .project-card p {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #444;
-    }
-
-    .project-card a {
-      display:inline-block;
-      margin-top:10px;
-      padding:10px 15px;
-      background:#0d47a1;
-      color:white;
-      border-radius:6px;
-      text-decoration:none;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .project-card a:hover {
-      box-shadow:0 0 14px rgba(13,71,161,0.8);
-      transform:translateY(-2px);
-    }
-
-    /* Footer */
     footer {
       background:#0d47a1;
       color:white;
@@ -191,154 +124,6 @@
       margin:0 15px;
       font-size:22px;
       text-decoration:none;
-      transition: text-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    footer a:hover {
-      opacity:0.9;
-      text-shadow:0 0 10px rgba(255,255,255,0.9);
-      transform:translateY(-2px);
-    }
-
-    /* Hero responsiveness + glow */
-    .hero {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:60px;
-      background:white;
-      flex-wrap:wrap;
-    }
-
-    .hero-text {
-      max-width:450px;
-      margin-right:40px;
-      margin-bottom:20px;
-    }
-
-    .hero-text h1 {
-      font-size:48px;
-      margin:0;
-      color:#0d47a1;
-    }
-
-    .hero-text h2 {
-      font-size:32px;
-      margin:10px 0;
-      border-left:none;
-      padding-left:0;
-    }
-
-    .hero-text p {
-      font-size:20px;
-      color:#333;
-      margin:20px 0;
-    }
-
-    .hero-text a {
-      padding:12px 20px;
-      background:#0d47a1;
-      color:white;
-      text-decoration:none;
-      border-radius:6px;
-      font-size:18px;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .hero-text a:hover {
-      box-shadow:0 0 18px rgba(13,71,161,0.8);
-      transform:translateY(-2px);
-    }
-
-    .hero img {
-      width:320px;
-      height:auto;
-      border-radius:10px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.2);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .hero img:hover {
-      box-shadow:0 0 18px rgba(13,71,161,0.8);
-      transform:translateY(-4px);
-    }
-
-    /* Mobile Responsive Layout */
-    @media (max-width: 768px) {
-      .hero {
-        padding:30px 20px;
-      }
-
-      .hero-text {
-        margin-right:0;
-        text-align:center;
-      }
-
-      .hero-text h1 {
-        font-size:36px;
-      }
-
-      .hero-text h2 {
-        font-size:26px;
-      }
-
-      .hero-text p {
-        font-size:18px;
-      }
-
-      nav a {
-        display:inline-block;
-        margin:0 10px;
-        font-size:16px;
-      }
-
-      .container {
-        margin:20px auto;
-        padding:20px;
-      }
-
-      h2 {
-        font-size:24px;
-      }
-
-      .gallery {
-        justify-content:center;
-      }
-
-      .gallery img {
-        width:200px;
-      }
-
-      .project-card {
-        padding:15px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-text h1 {
-        font-size:30px;
-      }
-
-      .hero-text h2 {
-        font-size:22px;
-      }
-
-      .hero-text p {
-        font-size:16px;
-      }
-
-      nav {
-        padding:10px;
-      }
-
-      nav a {
-        display:block;
-        margin:6px 0;
-      }
-
-      .gallery img {
-        width:160px;
-      }
     }
 
   </style>
@@ -346,47 +131,15 @@
 
 <body>
 
-  <!-- CONFETTI UC BERKELEY LOGOS -->
-  <script>
-    function launchConfetti() {
-      const count = 40;
-      for (let i = 0; i < count; i++) {
-        let img = document.createElement("img");
-        img.src = "https://upload.wikimedia.org/wikipedia/commons/4/4a/UC_Berkeley_seal.svg";
-        img.style.position = "fixed";
-        img.style.width = "40px";
-        img.style.left = Math.random() * window.innerWidth + "px";
-        img.style.top = "-60px";
-        img.style.opacity = "0.9";
-        img.style.animation = "fall 2.5s linear forwards";
-        document.body.appendChild(img);
-      }
-    }
-
-    window.onload = launchConfetti;
-
-    const style = document.createElement("style");
-    style.innerHTML = `
-      @keyframes fall {
-        to { transform: translateY(120vh) rotate(360deg); opacity:0; }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
-
   <!-- HERO SECTION -->
   <div class="hero">
     <div class="hero-text">
       <h1>Engineering Portfolio</h1>
       <h2>Paul Tran</h2>
-      <p>
-        Mechanical Engineer & Data Science at UC Berkeley
-      </p>
+      <p>Mechanical Engineer & Data Science at UC Berkeley</p>
 
       <!-- Resume Download Button -->
-      <a href="resume.pdf">
-        Download Resume (PDF)
-      </a>
+      <a href="resume.pdf">Download Resume (PDF)</a>
     </div>
 
     <div>
@@ -394,7 +147,7 @@
     </div>
   </div>
 
-  <!-- STICKY NAVIGATION BAR -->
+  <!-- NAVIGATION BAR -->
   <nav>
     <a href="#my-life">My Life</a>
     <a href="#about-me">About Me</a>
@@ -406,16 +159,11 @@
   <header>
     <h1>Paul Tran</h1>
     <p>Mechanical Engineering & Data Science @ UC Berkeley</p>
-    <p>
-      <a href="mailto:paul.trann@berkeley.edu" style="color:white;">paul.trann@berkeley.edu</a>
-    </p>
+    <p><a href="mailto:paul.trann@berkeley.edu" style="color:white;">paul.trann@berkeley.edu</a></p>
   </header>
 
   <!-- MAIN CONTENT -->
   <div class="container">
-
-    <!-- RESUME SECTION -->
-    <h2 id="resume">Resume</h2>
 
     <!-- ABOUT ME -->
     <h2 id="about-me">About Me</h2>
@@ -424,43 +172,12 @@
       Passionate about engineering design, prototyping, and building meaningful products.
     </p>
 
-    <!-- EDUCATION -->
-    <h2>Education</h2>
-    <div class="section">
-      <div class="item">
-        <div class="item-title">University of California, Berkeley</div>
-        <div class="item-sub">B.S. Mechanical Engineering, Minor in Data Science — GPA: 3.68</div>
-      </div>
-    </div>
-
-    <!-- ENGINEERING PROJECTS -->
-    <h2 id="engineering-projects">Engineering Projects</h2>
-
-    <div class="project-card">
-      <h3>Automated Snack Dispenser</h3>
-      <p>IoT-enabled dispenser using sensors + actuators for precise automated control.</p>
-      <a href="projects/snack-dispenser.html">View Full Project</a>
-    </div>
-
-    <div class="project-card">
-      <h3>iPhone LiDAR Mount</h3>
-      <p>Designed and fabricated a LiDAR-enabled measurement mount using CNC, waterjet, and 3D printing.</p>
-      <a href="projects/lidar-mount.html">View Full Project</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Arcade Machine</h3>
-      <p>Designed gantry system with 5 belts and 4 rails; programmed servo motors for motion control.</p>
-      <a href="projects/arcade-machine.html">View Full Project</a>
-    </div>
-
     <!-- MY LIFE -->
     <h2 id="my-life">My Life</h2>
-
     <div class="gallery">
-      <img src="add picture 1" alt="My Life 1">
-      <img src="add picture 2" alt="My Life 2">
-      <img src="add picture 3" alt="My Life 3">
+      <img src="add picture 1">
+      <img src="add picture 2">
+      <img src="add picture 3">
     </div>
 
     <ul>
@@ -474,6 +191,48 @@
       <li>Poker</li>
       <li>Marathon</li>
     </ul>
+
+    <!-- ENGINEERING PROJECTS -->
+    <h2 id="engineering-projects">Engineering Projects</h2>
+
+    <div class="project-card">
+      <h3>Automated Snack Dispenser</h3>
+      <p>IoT-enabled dispenser using sensors + actuators for precise automated control.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>iPhone LiDAR Mount</h3>
+      <p>Designed and fabricated a LiDAR-enabled measurement mount using CNC, waterjet, and 3D printing.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Arcade Machine</h3>
+      <p>Designed gantry system with 5 belts and 4 rails; programmed servo motors for motion control.</p>
+    </div>
+
+    <!-- RESUME SECTION -->
+    <h2 id="resume">Resume</h2>
+
+    <h3>Education</h3>
+    <div class="item">
+      <div class="item-title">University of California, Berkeley</div>
+      <div class="item-sub">B.S. Mechanical Engineering, Minor in Data Science — GPA: 3.68</div>
+    </div>
+
+    <h3>Skills</h3>
+    <ul>
+      <li>SolidWorks</li>
+      <li>Python</li>
+      <li>MATLAB</li>
+      <li>Manufacturing Processes</li>
+    </ul>
+
+    <h3>Work Experience</h3>
+    <div class="item">
+      <div class="item-title">Mechanical Design Intern — LensAI</div>
+      <div class="item-sub">Summer 2024</div>
+      <p>Designed prototypes, performed tolerance analysis, and supported product development.</p>
+    </div>
 
   </div>
 
