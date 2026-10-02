@@ -48,10 +48,9 @@
   }
 
 .hero-text a {
-  font-size: 20px;      /* bigger button text */
-  padding: 14px 24px;   /* bigger button */
+  font-size: 20px;   
+  padding: 14px 24px;   
 }
-
 
     .hero-img {
       width: 420px;
@@ -59,6 +58,46 @@
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    /*life bullet list*/
+    .life-list {
+  display: flex;
+  gap: 40px;
+}
+
+.life-list ul {
+  list-style-type: disc;
+}
+
+    /* Project Card Cover */
+    .project-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+  
+    .project-card:hover {
+    box-shadow: 0 0 18px rgba(13,71,161,0.6);
+    transform: translateY(-4px);
+    }
+
+    .project-img {
+    width: 120px;       
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .project-text {
+    flex: 1;
     }
 
     /* Sticky Navbar */
@@ -226,10 +265,11 @@
   <div class="hero-text">
     <h1>Engineering Portfolio</h1>
     <h2>Paul Tran</h2>
-    <p>B.S. Mechanical Engineer & Data Science</p>
-    <p>University of California, Berkeley | C/O 2027</p>
+    <p>Mechanical Engineer & Data Science</p>
+    <p>University of California, Berkeley</p>
+    <p> </p>
     <p>Please explore my portfolio and reach out!</p>
-    <a href="resume.pdf">Download Resume (PDF)</a>
+    <a href="Paul_Tran_Resume.pdf">Download Resume (PDF)</a>
   </div>
 
 </div>
@@ -257,9 +297,15 @@
     <p>
       I am a four-year Mechanical Engineering student studying at the University of California, Berkeley.
       I am interested in roles involving product design, process optimzation/efficiency, and product management.
+    </p>
+    <p>
       I would love to leverage my skills to improve life and the planet, so medical technology, big tech, manufacturing,
       and product development companies are places where I would love to work.
-      
+    </p>
+    <p>
+      Outside of work, I love fitness; I go to the gym 5x a week, conquered a marathon, and hope to become an Ironman one day.
+      I'm also a big foodie and always need to try the best restaurants and hole-in-the-wall restaurants whenever I visit a new location.
+      Lastly, you can catch me at a concert or EDM festivals (my favorite is progressive house).
     </p>
 
     <!-- MY LIFE -->
@@ -270,35 +316,56 @@
       <img src="add picture 3">
     </div>
 
-    <ul>
-      <li>Vlogging</li>
-      <li>Basketball</li>
-      <li>Gym</li>
-      <li>Food</li>
-      <li>3D Printing</li>
-      <li>Legos</li>
-      <li>Cooking</li>
-      <li>Poker</li>
-      <li>Marathon</li>
-    </ul>
+  <ul>
+    <li>Vlogging</li>
+    <li>Basketball</li>
+    <li>Gym</li>
+    <li>Food</li>
+  </ul>
+
+  <ul>
+    <li>3D Printing</li>
+    <li>Legos</li>
+    <li>Cooking</li>
+    <li>Poker</li>
+    <li>Marathon</li>
+  </ul>
+</div>
 
     <!-- ENGINEERING PROJECTS -->
     <h2 id="engineering-projects">Engineering Projects</h2>
 
     <div class="project-card">
+      <img src="project1.jpg" class="project-img" alt="Automated Bottle/Jar Opener">
+      <div class="project-text">
+      <h3>Automated Bottle/Jar Opener</h3>
+      <p>In-progress.</p>
+    </div>
+  </div>
+
+    <div class="project-card">
+      <img src="project2.jpg" class="project-img" alt="Automated Snack Dispenser">
+      <div class="project-text">
       <h3>Automated Snack Dispenser</h3>
       <p>IoT-enabled dispenser using sensors + actuators for precise automated control.</p>
     </div>
+  </div>
 
     <div class="project-card">
+      <img src="project3.jpg" class="project-img" alt="iPhone LiDAR Mount">
+      <div class="project-text">
       <h3>iPhone LiDAR Mount</h3>
       <p>Designed and fabricated a LiDAR-enabled measurement mount using CNC, waterjet, and 3D printing.</p>
     </div>
+  </div>
 
     <div class="project-card">
+      <img src="project4.jpg" class="project-img" alt="Arcade Machine">
+      <div class="project-text">
       <h3>Arcade Machine</h3>
       <p>Designed gantry system with 5 belts and 4 rails; programmed servo motors for motion control.</p>
     </div>
+  </div>
 
     <!-- RESUME SECTION -->
     <h2 id="resume">Resume</h2>
@@ -309,18 +376,28 @@
       <div class="item-sub">B.S. Mechanical Engineering, Minor in Data Science — GPA: 3.68</div>
     </div>
 
-    <h3>Skills</h3>
+    <h3>Technical Skills</h3>
     <ul>
-      <li>SolidWorks</li>
-      <li>Python</li>
-      <li>MATLAB</li>
-      <li>Manufacturing Processes</li>
+      <li><strong>CAD:</strong> SolidWorks, Fusion 360, Autodesk, CATIA, AutoCAD, ANSYS</li>
+      <li><strong>Programming:</strong> Python, MATLAB. SQL, DAX, HTML</li>
+      <li><strong>Manufacturing:</strong> CNC, Waterjet, 3D Printing, Milling</li>
+      <li><strong>Data Tools:</strong> Pandas, NumPy, Excel, SQL, MATLAB</li>
     </ul>
 
     <h3>Work Experience</h3>
     <div class="item">
-      <div class="item-title">Mechanical Design Intern — LensAI</div>
-      <div class="item-sub">Summer 2024</div>
+      <div class="item-title">Product Engineer Intern - Niagara Bottling</div>
+      <div class="item-sub">Summer 2026</div>
+      <p>Assisted with new product development, optimized Product Engineer tasks, and performed a 0.5L market study.</p>
+    </div>
+    <div class="item">
+      <div class="item-title">Manufacturing Engineer Intern - Abbott</div>
+      <div class="item-sub">Spring 2026</div>
+      <p>Developed a Manufacturing Engineering System (MES), led part-issue investigations, and directly supported assembly.</p>
+    </div>
+    <div class="item">
+      <div class="item-title">Product Design Engineer Intern - LensAI</div>
+      <div class="item-sub">Fall 2024</div>
       <p>Designed prototypes, performed tolerance analysis, and supported product development.</p>
     </div>
 
@@ -330,7 +407,6 @@
   <footer>
     <a href="mailto:paul.trann@berkeley.edu">📧</a>
     <a href="https://www.linkedin.com/in/paul-nk-tran/">🔗</a>
-    <a href="https://www.tiktok.com/">🎵</a>
     <a href="https://github.com/paul-trann">💻</a>
     <p style="margin-top:10px;">© 2026 Paul Tran</p>
   </footer>
