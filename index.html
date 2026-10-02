@@ -130,7 +130,35 @@
 </head>
 
 <body>
+  
+  <!-- CONFETTI UC BERKELEY LOGOS -->
+  <script>
+    function launchConfetti() {
+      const count = 40;
+      for (let i = 0; i < count; i++) {
+        let img = document.createElement("img");
+        img.src = "https://upload.wikimedia.org/wikipedia/commons/4/4a/UC_Berkeley_seal.svg";
+        img.style.position = "fixed";
+        img.style.width = "40px";
+        img.style.left = Math.random() * window.innerWidth + "px";
+        img.style.top = "-60px";
+        img.style.opacity = "0.9";
+        img.style.animation = "fall 2.5s linear forwards";
+        document.body.appendChild(img);
+      }
+    }
 
+    window.onload = launchConfetti;
+
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes fall {
+        to { transform: translateY(120vh) rotate(360deg); opacity:0; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+  
   <!-- HERO SECTION -->
   <div class="hero">
     <div class="hero-text">
@@ -143,7 +171,7 @@
     </div>
 
     <div>
-      <img src="add picture" alt="Paul Tran">
+      <img src="berkeley_hs.jpeg" alt="Paul Tran">
     </div>
   </div>
 
