@@ -15,6 +15,13 @@
       opacity: 0;
       animation: fadeIn 1.2s ease-in forwards;
     }
+    .hero-img {
+      width: 320px;        /* controls size */
+      max-width: 100%;     /* prevents overflow */
+      height: auto;        /* keeps proportions */
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
@@ -160,20 +167,22 @@
   </script>
   
   <!-- HERO SECTION -->
-  <div class="hero">
-    <div class="hero-text">
-      <h1>Engineering Portfolio</h1>
-      <h2>Paul Tran</h2>
-      <p>Mechanical Engineer & Data Science at UC Berkeley</p>
+<div class="hero">
 
-      <!-- Resume Download Button -->
-      <a href="resume.pdf">Download Resume (PDF)</a>
-    </div>
-
-    <div>
-      <img src="berkeley_hs.jpeg" alt="Paul Tran">
-    </div>
+  <!-- LEFT SIDE: IMAGE -->
+  <div>
+    <img src="berkeley_hs.jpeg" alt="Paul Tran" class="hero-img">
   </div>
+
+  <!-- RIGHT SIDE: TEXT -->
+  <div class="hero-text">
+    <h1>Engineering Portfolio</h1>
+    <h2>Paul Tran</h2>
+    <p>Mechanical Engineer & Data Science at UC Berkeley</p>
+    <a href="resume.pdf">Download Resume (PDF)</a>
+  </div>
+
+</div>
 
   <!-- NAVIGATION BAR -->
   <nav>
