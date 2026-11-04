@@ -23,7 +23,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: Cambria, sans-serif;
+      font-family: Cambria, Georgia, serif;
       font-size: 17px;
       line-height: 1.6;
       margin: 0;
@@ -142,6 +142,8 @@
     }
     section > h3:first-of-type { margin-top: 0; }
 
+    .hint { color: var(--muted); font-style: italic; font-size: 15px; margin-top: -8px; }
+
     /* ========== SHARED CARD STYLE ========== */
     .card {
       background: var(--card);
@@ -154,38 +156,100 @@
     .card:hover { box-shadow: var(--glow); transform: translateY(-4px); }
     .card:last-child { margin-bottom: 0; }
 
-    /* ========== GALLERY ========== */
-    .gallery {
+    /* Shared photo grid (project details + hobby pop-ups) */
+    .photo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: var(--gap);
-      margin-bottom: var(--gap);
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 16px 0 20px;
     }
-    .gallery img {
+    .photo-grid img, .photo-grid video {
       width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
       border-radius: var(--radius);
       box-shadow: var(--shadow-img);
       background: #e0e0e0;
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+    .photo-grid img:hover { transform: scale(1.03); }
+
+    /* ========== GALLERY ========== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--gap);
+      margin-bottom: 30px;
+    }
+    /* Each My Life photo is a button that opens a gallery */
+    .gallery-item {
+      position: relative;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-img);
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
-    .gallery img:hover { box-shadow: var(--glow); transform: translateY(-4px); }
+    .gallery-item:hover { box-shadow: var(--glow); transform: translateY(-4px); }
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #e0e0e0;
+    }
+    .gallery-label {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 24px 14px 10px;
+      color: white;
+      font: inherit;
+      font-size: 17px;
+      text-align: left;
+      background: linear-gradient(transparent, rgba(0,0,0,0.65));
+    }
+    .gallery-label::after { content: " →"; }
 
-    /* ========== HOBBIES LIST ========== */
+    /* ========== HOBBIES LIST (original layout) ========== */
     .life-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: var(--gap);
     }
     .life-list ul { margin: 0; list-style-type: disc; }
+    .hobby-link {
+      font: inherit;
+      color: var(--text);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+      transition: color 0.2s ease;
+    }
+    .hobby-link:hover { color: var(--blue); text-decoration: underline; }
 
-    /* ========== PROJECTS ========== */
-    .project-card {
+    /* Work experience cards reuse the project expand style */
+    .job-card summary .project-text p { font-style: italic; }
+
+    /* ========== PROJECTS (EXPANDABLE) ========== */
+    .project-card { padding: 0; overflow: hidden; }
+    .project-card[open] { transform: none; box-shadow: var(--glow); }
+
+    .project-card summary {
       display: flex;
       align-items: center;
       gap: var(--gap);
+      padding: 20px;
+      cursor: pointer;
+      list-style: none;
     }
+    .project-card summary::-webkit-details-marker { display: none; }
+
     .project-img {
       width: 120px;
       height: 120px;
@@ -198,6 +262,85 @@
     .project-text { flex: 1; }
     .project-text h3 { margin: 0 0 6px; }
     .project-text p  { margin: 0; color: var(--muted); }
+
+    .expand-icon {
+      font-size: 26px;
+      color: var(--blue);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .project-card[open] .expand-icon { transform: rotate(45deg); }
+
+    .project-details {
+      padding: 0 24px 24px;
+      border-top: 1px solid #e3e3e3;
+      animation: fadeInUp 0.4s ease-out;
+    }
+    .project-details h4 {
+      font-size: 18px;
+      color: var(--blue);
+      margin: 20px 0 8px;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .tags span {
+      background: #e3ecfa;
+      color: var(--blue);
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    /* ========== POP-UPS (HOBBIES + FULL-SIZE PHOTO) ========== */
+    dialog {
+      border: none;
+      border-radius: var(--radius);
+      padding: 30px;
+      width: min(850px, 92vw);
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+    dialog::backdrop { background: rgba(0,0,0,0.6); }
+    dialog h2 { margin-top: 0; }
+
+    .close-btn {
+      position: sticky;
+      top: 0;
+      float: right;
+      font-size: 28px;
+      line-height: 1;
+      background: white;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 50%;
+    }
+    .close-btn:hover { color: var(--blue); }
+
+    #lightbox {
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+      width: auto;
+      max-width: 92vw;
+      overflow: visible;
+    }
+    #lightbox img {
+      display: block;
+      max-width: 92vw;
+      max-height: 85vh;
+      border-radius: var(--radius);
+    }
+    #lightbox .close-btn {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      float: none;
+    }
+
+    .empty-note { color: var(--muted); font-style: italic; }
 
     /* ========== RESUME ITEMS ========== */
     .item-title { font-weight: 700; font-size: 18px; }
@@ -226,7 +369,9 @@
       .hero-text h1 { font-size: 40px; }
       .hero-text h2 { font-size: 28px; }
       nav a { margin: 0 8px; font-size: 16px; }
-      .project-card { flex-direction: column; text-align: center; }
+      .project-card summary { flex-direction: column; text-align: center; }
+      .project-details { padding: 0 16px 20px; }
+      dialog { padding: 20px; }
     }
   </style>
 </head>
@@ -246,7 +391,7 @@
     </div>
   </div>
 
-  <!-- NAV (matches section order below) -->
+  <!-- NAV -->
   <nav>
     <a href="#about-me">About Me</a>
     <a href="#my-life">My Life</a>
@@ -286,28 +431,41 @@
     <!-- MY LIFE -->
     <section id="my-life">
       <h2>My Life</h2>
+      <p class="hint">Click a photo or hobby to see more.</p>
+
+      <!-- data-gallery must match a "name" in the GALLERIES list at the bottom -->
       <div class="gallery">
-        <img src="life1.jpg" alt="Me at a music festival">
-        <img src="life2.jpg" alt="Me at my first marathon">
-        <img src="life3.jpg" alt="Me enjoying one of my favorite meals">
+        <button class="gallery-item" data-gallery="Music">
+          <img src="life1.jpg" alt="Me at a music festival">
+          <span class="gallery-label">Festivals</span>
+        </button>
+        <button class="gallery-item" data-gallery="Marathon">
+          <img src="life2.jpg" alt="Me at my first marathon">
+          <span class="gallery-label">Marathon</span>
+        </button>
+        <button class="gallery-item" data-gallery="Food">
+          <img src="life3.jpg" alt="Me enjoying one of my favorite meals">
+          <span class="gallery-label">Food</span>
+        </button>
       </div>
+
       <div class="life-list">
         <ul>
-          <li>Vlogging</li>
-          <li>Legos</li>
-          <li>Music</li>
-          <li>Poker</li>
+          <li><button class="hobby-link" data-gallery="Vlogging">Vlogging</button></li>
+          <li><button class="hobby-link" data-gallery="Legos">Legos</button></li>
+          <li><button class="hobby-link" data-gallery="Music">Music</button></li>
+          <li><button class="hobby-link" data-gallery="Poker">Poker</button></li>
         </ul>
         <ul>
-          <li>Basketball</li>
-          <li>Gym</li>
-          <li>Marathon</li>
-          <li>Football</li>
+          <li><button class="hobby-link" data-gallery="Basketball">Basketball</button></li>
+          <li><button class="hobby-link" data-gallery="Gym">Gym</button></li>
+          <li><button class="hobby-link" data-gallery="Marathon">Marathon</button></li>
+          <li><button class="hobby-link" data-gallery="Football">Football</button></li>
         </ul>
         <ul>
-          <li>Food</li>
-          <li>Cooking</li>
-          <li>Food Concent Creation</li>
+          <li><button class="hobby-link" data-gallery="Food">Food</button></li>
+          <li><button class="hobby-link" data-gallery="Cooking">Cooking</button></li>
+          <li><button class="hobby-link" data-gallery="Food Content Creation">Food Content Creation</button></li>
         </ul>
       </div>
     </section>
@@ -315,38 +473,170 @@
     <!-- ENGINEERING PROJECTS -->
     <section id="engineering-projects">
       <h2>Engineering Projects</h2>
+      <p class="hint">Click a project to see more photos and details.</p>
 
-      <div class="card project-card">
-        <img src="project1.jpg" class="project-img" alt="Automated Bottle/Jar Opener">
-        <div class="project-text">
-          <h3>Automated Bottle/Jar Opener</h3>
+      <!-- ===== PROJECT 1 ===== -->
+      <details class="card project-card">
+        <summary>
+          <img src="project1.jpg" class="project-img" alt="Automated Bottle/Jar Opener">
+          <div class="project-text">
+            <h3>Automated Bottle/Jar Opener</h3>
+            <p>In progress.</p>
+          </div>
+          <span class="expand-icon">+</span>
+        </summary>
+        <div class="project-details">
+          <div class="photo-grid">
+            <img src="jar-opener-1.jpg" alt="Jar opener photo 1">
+            <img src="jar-opener-2.jpg" alt="Jar opener photo 2">
+          </div>
+          <h4>Overview</h4>
           <p>In progress.</p>
+          <h4>What I Did</h4>
+          <ul>
+            <li>In progress.</li>
+            <li>In progress.</li>
+          </ul>
+          <h4>Results</h4>
+          <p>Dispensed consistent portions within about 5% of the target weight.</p>
+          <h4>Problems Faced</h4>
+          <ul>
+            <li><strong>Problem:</strong> Write what went wrong. <strong>Solution:</strong> Write how you fixed it.</li>
+            <li><strong>Problem:</strong> Write what went wrong. <strong>Solution:</strong> Write how you fixed it.</li>
+          </ul>
+          <h4>Tools &amp; Skills</h4>
+          <div class="tags"><span>SolidWorks</span><span>3D Printing</span></div>
         </div>
-      </div>
+      </details>
 
-      <div class="card project-card">
-        <img src="snack dispenser testing.jpeg" class="project-img" alt="Automated Snack Dispenser">
-        <div class="project-text">
-          <h3>Automated Snack Dispenser</h3>
-          <p>IoT-enabled dispenser using sensors and actuators for precise automated control.</p>
+      <!-- ===== PROJECT 2 ===== -->
+      <details class="card project-card">
+        <summary>
+          <img src="snack dispenser testing.jpeg" class="project-img" alt="Automated Snack Dispenser">
+          <div class="project-text">
+            <h3>Automated Snack Dispenser</h3>
+            <p>IoT-enabled dispenser using sensors and actuators for precise automated control.</p>
+          </div>
+          <span class="expand-icon">+</span>
+        </summary>
+        <div class="project-details">
+          <div class="photo-grid">
+            <img src="snack dispenser cad.png" alt="Snack dispenser CAD">
+            <img src="snack dispenser circuit.jpeg" alt="Snack dispenser circuit">
+            <img src="snack dispenser receiver code.png" alt="Snack dispenser receiver code">
+          </div>
+          <h4>Overview</h4>
+          <p>College students often struggle to find convenient, portion-controlled snack options due to busy schedules. While buying snacks in bulk saves money, eating directly from large bags can 
+            lead to overeating and poor portion awareness. This project demonstrates an automatic dispenser using coffee beans as an example. The system efficiently grinds and dispenses single
+            servings of snacks—like candy or crackers - helping users save time, maintain portion control, and build healthier habits without sacrificing the benefits of bulk buying.</p>
+          <h4>What I Did</h4>
+          <ul>
+            <li>We used two sensors connected to an ESP32 microcontroller: an ultrasonic sensor mounted on top to measure remaining snack levels, and a light sensor that detects when a cup is placed 
+              by sensing a drop in light. These sensors trigger two actuators—a set of LEDs that indicate snack levels (green = full, yellow = half, red = refill needed), and a servo motor that dispenses a 
+              single serving when a cup is detected.</li>
+            <li>We designed a compact dispensing unit (10.5" × 6.5" × 6.5") to fit a cup or small bowl for snack collection. The plywood frame includes precisely measured slots for the servo motor and ultrasonic 
+              sensor, with a dedicated housing for the ESP32 microcontroller to reduce light interference and improve sensor accuracy. The dispensing mechanism combines a servo motor with gravity-assisted flow for 
+              accurate portioning and minimal spillage. A rubber band at the exit point balances force, reducing strain on the motor and enhancing stability.</li>
+            <li>In this project, my ESP32 acted as the receiver, communicating with a primary ESP32 via its MAC address. I programmed it to trigger the servo motor when sensor conditions were met, dispensing a 
+              single serving in 0.35 seconds for precise portion control. To counteract tension from a rubber band in the hatch mechanism, the servo was powered through the 5V pin for smooth operation.</li>
+          </ul>
+          <h4>Results</h4>
+          <p>Dispensed consistent portions within about 5% of the target weight.</p>
+          <h4>Problems Faced</h4>
+          <ul>
+            <li><strong>Problem:</strong> Component issues led to a weak light sensor that required a flashlight. <strong>Solution:</strong> We added a cutout to let more light into the housing to accommodate 
+              the poor sensor.</li>
+            <li><strong>Problem:</strong> The door allowing the food to fall was attached to the servo alone, which could not support all the weight. <strong>Solution:</strong> We added a rubber band to
+              balance the load across the axle</li>
+          </ul>
+          <h4>Tools &amp; Skills</h4>
+          <div class="tags"><span>Sensors</span><span>Actuators</span><span>IoT</span></div>
         </div>
-      </div>
+      </details>
 
-      <div class="card project-card">
-        <img src="lidar mount rendered.png" class="project-img" alt="iPhone LiDAR Mount">
-        <div class="project-text">
-          <h3>iPhone LiDAR Mount</h3>
-          <p>Designed and fabricated a LiDAR-enabled measurement mount using CNC, waterjet, and 3D printing.</p>
+      <!-- ===== PROJECT 3 ===== -->
+      <details class="card project-card">
+        <summary>
+          <img src="lidar mount rendered.png" class="project-img" alt="iPhone LiDAR Mount">
+          <div class="project-text">
+            <h3>iPhone LiDAR Mount</h3>
+            <p>Designed and fabricated a LiDAR-enabled measurement mount using CNC, waterjet, and 3D printing.</p>
+          </div>
+          <span class="expand-icon">+</span>
+        </summary>
+        <div class="project-details">
+          <div class="photo-grid">
+            <img src="lidar-mount-1.jpg" alt="LiDAR mount photo 1">
+            <img src="lidar-mount-2.jpg" alt="LiDAR mount photo 2">
+            <img src="lidar-mount-3.jpg" alt="LiDAR mount photo 3">
+          </div>
+          <h4>Overview</h4>
+          <p>While LiDAR-equipped smartphones offer powerful 3D scanning capabilities, handheld use often leads to motion inconsistencies, incomplete coverage, and user fatigue. The LiDAR iPhone Mount solves 
+            this by providing a stable, controlled scanning setup for organic objects. With a rotating bearing, secure mount, adjustable arm, and counterweight, it enables smooth 360° rotation 
+            and accurate depth capture. This improves model precision, reduces manual error, and makes high-quality mobile scanning more accessible for research and creative applications.</p>
+          <h4>What I Did</h4>
+          <ul>
+            <li>The design centers on an 80mm bearing and a custom 3D-printed iPhone mount optimized for LiDAR scanning of small organic objects. A stable base plate and rigid steel–aluminum structure minimize 
+              distortion during operation. The PLA mount allows precise customization while remaining lightweight, and the entire assembly is secured with fasteners. To ensure smooth rotation, the bearing sleeve 
+              is press-fit into the frame, supported by spacers and a reinforced base for stability. The iPhone is held securely on one end of the rotating arm, while a counterweight on the opposite end balances 
+              the system, enabling accurate, uninterrupted 360° scans.</li>
+            <li>Precision was essential in fabricating the LiDAR iPhone mount. I waterjet-cut the metal components for clean edges and accurate dimensions, then refined them on a CNC milling machine for optimal fit. 
+              The bearing sleeve required multiple lathe passes to achieve a precise press fit, which is tight enough for stability and smooth enough for rotation. Final assembly used fasteners and spacers to ensure 
+              durability and motion accuracy.</li>
+          </ul>
+          <h4>Results</h4>
+          <p>___</p>
+          <h4>Problems Faced</h4>
+          <ul>
+            <li><strong>Problem:</strong> The main challenge was software - Scaniverse was the best free app we found, but it rounds measurements and struggles with depth accuracy. <strong>Solution:</strong> Write how you fixed it.</li>
+            <li><strong>Problem:</strong> Write what went wrong. <strong>Solution:</strong> Write how you fixed it.</li>
+          </ul>
+          <h4>Tools &amp; Skills</h4>
+          <div class="tags"><span>CNC</span><span>Waterjet</span><span>3D Printing</span></div>
         </div>
-      </div>
+      </details>
 
-      <div class="card project-card">
-        <img src="lily pad physical gantry.jpeg" class="project-img" alt="Arcade Machine">
-        <div class="project-text">
-          <h3>Arcade Machine</h3>
-          <p>Designed a gantry system with 5 belts and 4 rails; programmed servo motors for motion control.</p>
+      <!-- ===== PROJECT 4 ===== -->
+      <details class="card project-card">
+        <summary>
+          <img src="lily pad physical gantry.jpeg" class="project-img" alt="Arcade Machine">
+          <div class="project-text">
+            <h3>Arcade Machine</h3>
+            <p>Designed a gantry system with 5 belts and 4 rails; programmed servo motors for motion control.</p>
+          </div>
+          <span class="expand-icon">+</span>
+        </summary>
+        <div class="project-details">
+          <div class="photo-grid">
+            <img src="arcade-1.jpg" alt="Arcade machine photo 1">
+            <img src="arcade-2.jpg" alt="Arcade machine photo 2">
+            <img src="arcade-3.jpg" alt="Arcade machine photo 3">
+          </div>
+          <h4>Overview</h4>
+          <p>The Lily Pad Plunge’s purpose is to bring the old-time arcade experience into your home. The game will have up, down, left, and right controls along with a drop button. The machine will have a string 
+            and a pulley that holds a 3D-printed frog. We will use the controls to position the frog above the lily pads on the machine's bottom. The goal is to drop the frog on the lily pad. The smaller the lily 
+            pad is, the more points it is worth. Each turn will end after a set amount of time has passed.</p>
+          <h4>What I Did</h4>
+          <ul>
+            <li>We designed a gantry system with smooth motion across three axes (X, Y, Z), using a cross-shaped frame mounted to belts for controlled movement. The machine’s frame is a compact 12" × 12" × 24" box 
+              made from ¼" plywood, scaled down from traditional arcade machines for portability and home use. The console housing includes directional buttons and an LCD screen for real- time gameplay feedback, with 
+              space below for electrical components. To avoid adhesives that could damage parts, we used interference fits to secure the buttons and screen — ensuring durability and clean assembly.</li>
+            <li>To build Lily Pad Plunge, we began by laser-cutting and assembling the housing components. We programmed two servo motors to control the gantry system and three additional motors to operate the conveyor 
+              belt carrying the lily pads. After configuring the gantry for precise frog movement and drop accuracy, we integrated both systems into the game’s frame. We then organized the electrical components, tested the 
+              LCD and buttons for real-time gameplay feedback, and mounted the controls using a microcontroller and breadboard. An attempt counter was added to limit each player to three turns, allowing smooth transitions 
+              between users. Finally, we painted the game, made final adjustments, and presented it to our club — where it now lives as a daily-use arcade piece.</li>
+          </ul>
+          <h4>Results</h4>
+          <p>___</p>
+          <h4>Problems Faced</h4>
+          <ul>
+            <li><strong>Problem:</strong> Write what went wrong. <strong>Solution:</strong> Write how you fixed it.</li>
+            <li><strong>Problem:</strong> Write what went wrong. <strong>Solution:</strong> Write how you fixed it.</li>
+          </ul>
+          <h4>Tools &amp; Skills</h4>
+          <div class="tags"><span>Gantry Design</span><span>Servo Control</span></div>
         </div>
-      </div>
+      </details>
     </section>
 
     <!-- RESUME -->
@@ -360,21 +650,90 @@
       </div>
 
       <h3>Work Experience</h3>
-      <div class="card item">
-        <div class="item-title">Product Engineer Intern — Niagara Bottling</div>
-        <div class="item-sub">Summer 2026</div>
-        <p>Assisted with new product development, optimized Product Engineer tasks, and performed a 0.5L market study.</p>
-      </div>
-      <div class="card item">
-        <div class="item-title">Manufacturing Engineer Intern — Abbott</div>
-        <div class="item-sub">Spring 2026</div>
-        <p>Developed a Manufacturing Engineering System (MES), led part-issue investigations, and directly supported assembly.</p>
-      </div>
-      <div class="card item">
-        <div class="item-title">Product Design Engineer Intern — LensAI</div>
-        <div class="item-sub">Fall 2024</div>
-        <p>Designed prototypes, performed tolerance analysis, and supported product development.</p>
-      </div>
+      <p class="hint">Click a role to see more details.</p>
+
+      <!-- ===== JOB 1 ===== -->
+      <details class="card project-card job-card">
+        <summary>
+          <div class="project-text">
+            <div class="item-title">Product Engineer Intern — Niagara Bottling</div>
+            <div class="item-sub">Summer 2026</div>
+            <p>Assisted with new product development, optimized Product Engineer tasks utilizing AI agents, and performed a 0.5L market study.</p>
+          </div>
+          <span class="expand-icon">+</span>
+        </summary>
+        <div class="project-details">
+          <div class="photo-grid">
+            <img src="niagara-1.jpg" alt="Niagara Bottling photo 1">
+            <img src="niagara-2.jpg" alt="Niagara Bottling photo 2">
+          </div>
+          <h4>What I Did</h4>
+          <ul>
+            <li>Write about the new product development work.</li>
+            <li>Write which Product Engineer tasks you optimized and how.</li>
+            <li>Write what the 0.5L market study looked at and what you found.</li>
+          </ul>
+          <h4>Impact</h4>
+          <p>Write any results (time saved, decisions your work informed, etc.).</p>
+          <h4>Tools &amp; Skills</h4>
+          <div class="tags"><span>Product Development</span><span>Market Research</span></div>
+        </div>
+      </details>
+
+      <!-- ===== JOB 2 ===== -->
+      <details class="card project-card job-card">
+        <summary>
+          <div class="project-text">
+            <div class="item-title">Manufacturing Engineer Intern — Abbott</div>
+            <div class="item-sub">Spring 2026</div>
+            <p>Developed a Manufacturing Engineering System (MES), led part-issue investigations, and directly supported assembly.</p>
+          </div>
+          <span class="expand-icon">+</span>
+        </summary>
+        <div class="project-details">
+          <div class="photo-grid">
+            <img src="abbott-1.jpg" alt="Abbott photo 1">
+            <img src="abbott-2.jpg" alt="Abbott photo 2">
+          </div>
+          <h4>What I Did</h4>
+          <ul>
+            <li>Write about building the MES and what it does.</li>
+            <li>Write about a part-issue investigation you led.</li>
+            <li>Write how you supported assembly.</li>
+          </ul>
+          <h4>Impact</h4>
+          <p>Write any results (defects reduced, time saved, etc.).</p>
+          <h4>Tools &amp; Skills</h4>
+          <div class="tags"><span>MES</span><span>Root Cause Analysis</span><span>Assembly</span></div>
+        </div>
+      </details>
+
+      <!-- ===== JOB 3 ===== -->
+      <details class="card project-card job-card">
+        <summary>
+          <div class="project-text">
+            <div class="item-title">Product Design Engineer Intern — LensAI</div>
+            <div class="item-sub">Fall 2024</div>
+            <p>Designed prototypes, performed tolerance analysis, and supported product development.</p>
+          </div>
+          <span class="expand-icon">+</span>
+        </summary>
+        <div class="project-details">
+          <div class="photo-grid">
+            <img src="lensai-1.jpg" alt="LensAI photo 1">
+            <img src="lensai-2.jpg" alt="LensAI photo 2">
+          </div>
+          <h4>What I Did</h4>
+          <ul>
+            <li>Write which prototypes you designed.</li>
+            <li>Write about the tolerance analysis.</li>
+          </ul>
+          <h4>Impact</h4>
+          <p>Write any results.</p>
+          <h4>Tools &amp; Skills</h4>
+          <div class="tags"><span>Prototyping</span><span>Tolerance Analysis</span></div>
+        </div>
+      </details>
 
       <h3>Technical Skills</h3>
       <div class="card item">
@@ -382,12 +741,26 @@
           <li><strong>CAD:</strong> SolidWorks, Fusion 360, Autodesk, CATIA, AutoCAD, ANSYS</li>
           <li><strong>Programming:</strong> Python, MATLAB, SQL, DAX, HTML</li>
           <li><strong>Manufacturing:</strong> CNC, Waterjet, 3D Printing, Milling</li>
-          <li><strong>Data Tools:</strong> Pandas, NumPy, Excel, SQL, MATLAB, PowerBI</li>
+          <li><strong>Data Tools:</strong> Pandas, NumPy, Excel, Power BI</li>
         </ul>
       </div>
     </section>
 
   </main>
+
+  <!-- HOBBY POP-UP (filled in automatically) -->
+  <dialog id="hobby-dialog">
+    <button class="close-btn" aria-label="Close" onclick="this.closest('dialog').close()">×</button>
+    <h2 id="hobby-title"></h2>
+    <p id="hobby-caption"></p>
+    <div class="photo-grid" id="hobby-photos"></div>
+  </dialog>
+
+  <!-- FULL-SIZE PHOTO POP-UP -->
+  <dialog id="lightbox">
+    <button class="close-btn" aria-label="Close" onclick="this.closest('dialog').close()">×</button>
+    <img id="lightbox-img" src="" alt="">
+  </dialog>
 
   <!-- FOOTER -->
   <footer>
@@ -397,8 +770,81 @@
     <p>© 2026 Paul Tran</p>
   </footer>
 
-  <!-- CONFETTI: UC BERKELEY SEALS -->
   <script>
+    /* =========================================================
+       GALLERIES — EDIT THIS LIST
+       - "name" must match the data-gallery="..." on the photo or hobby
+       - "caption" is a short sentence shown at the top of the pop-up
+       - "photos" is a list of image file names in your repo
+       - To add a gallery, copy one line and change it
+       ========================================================= */
+    const GALLERIES = [
+      { name: "Vlogging",               caption: "", photos: ["vlogging-1.jpg", "vlogging-2.jpg", "vlogging-3.jpg"] },
+      { name: "Legos",                  caption: "", photos: ["legos-1.jpg", "legos-2.jpg", "legos-3.jpg"] },
+      { name: "Music",                  caption: "", photos: ["music-1.jpg", "music-2.jpg", "music-3.jpg"] },
+      { name: "Poker",                  caption: "", photos: ["poker-1.jpg", "poker-2.jpg", "poker-3.jpg"] },
+      { name: "Basketball",             caption: "", photos: ["basketball-1.jpg", "basketball-2.jpg", "basketball-3.jpg"] },
+      { name: "Gym",                    caption: "", photos: ["gym-1.jpg", "gym-2.jpg", "gym-3.jpg"] },
+      { name: "Marathon",               caption: "", photos: ["marathon-1.jpg", "marathon-2.jpg", "marathon-3.jpg"] },
+      { name: "Football",               caption: "", photos: ["football-1.jpg", "football-2.jpg", "football-3.jpg"] },
+      { name: "Food",                   caption: "", photos: ["food-1.jpg", "food-2.jpg", "food-3.jpg"] },
+      { name: "Cooking",                caption: "", photos: ["cooking-1.jpg", "cooking-2.jpg", "cooking-3.jpg"] },
+      { name: "Food Content Creation",  caption: "", photos: ["food-content-1.jpg", "food-content-2.jpg", "food-content-3.jpg"] }
+    ];
+
+    /* ---------- Open a gallery when a photo or hobby is clicked ---------- */
+    const hobbyDialog  = document.getElementById("hobby-dialog");
+    const hobbyTitle   = document.getElementById("hobby-title");
+    const hobbyCaption = document.getElementById("hobby-caption");
+    const hobbyPhotos  = document.getElementById("hobby-photos");
+
+    document.querySelectorAll("[data-gallery]").forEach(el => {
+      el.addEventListener("click", () => {
+        const name = el.dataset.gallery;
+        const hobby = GALLERIES.find(g => g.name === name) || { name: name, caption: "", photos: [] };
+        openHobby(hobby);
+      });
+    });
+
+    function openHobby(hobby) {
+      hobbyTitle.textContent = hobby.name;
+      hobbyCaption.textContent = hobby.caption;
+      hobbyCaption.style.display = hobby.caption ? "block" : "none";
+      hobbyPhotos.innerHTML = "";
+
+      if (hobby.photos.length === 0) {
+        hobbyPhotos.innerHTML = '<p class="empty-note">Photos coming soon!</p>';
+      } else {
+        hobby.photos.forEach((file, i) => {
+          const img = document.createElement("img");
+          img.src = file;
+          img.alt = hobby.name + " photo " + (i + 1);
+          hobbyPhotos.appendChild(img);
+        });
+      }
+      hobbyDialog.showModal();
+    }
+
+    /* ---------- Click any photo to see it full size ---------- */
+    const lightbox    = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    document.addEventListener("click", e => {
+      const img = e.target.closest(".photo-grid img");
+      if (!img) return;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.showModal();
+    });
+
+    /* ---------- Click the dark background to close a pop-up ---------- */
+    document.querySelectorAll("dialog").forEach(d => {
+      d.addEventListener("click", e => {
+        if (e.target === d) d.close();
+      });
+    });
+
+    /* ---------- Confetti: UC Berkeley seals ---------- */
     const fallStyle = document.createElement("style");
     fallStyle.textContent = `
       @keyframes fall {
@@ -414,3 +860,17 @@
         img.style.width = "60px";
         img.style.pointerEvents = "none";
         img.style.zIndex = "1000";
+        img.style.left = Math.random() * window.innerWidth + "px";
+        img.style.top = (Math.random() * -300) + "px";
+        img.style.opacity = "0.9";
+        const duration = 2 + Math.random() * 3;
+        img.style.animation = `fall ${duration}s linear forwards`;
+        img.addEventListener("animationend", () => img.remove());
+        document.body.appendChild(img);
+      }
+    }
+    window.addEventListener("load", launchConfetti);
+  </script>
+
+</body>
+</html>
