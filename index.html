@@ -236,6 +236,14 @@
     /* Work experience cards reuse the project expand style */
     .job-card summary .project-text p { font-style: italic; }
 
+    /* Company logos on work experience cards */
+    .company-logo {
+      object-fit: contain;
+      background: white;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
     /* ========== PROJECTS (EXPANDABLE) ========== */
     .project-card { padding: 0; overflow: hidden; }
     .project-card[open] { transform: none; box-shadow: var(--glow); }
@@ -342,7 +350,7 @@
 
     .empty-note { color: var(--muted); font-style: italic; }
 
-    /* ========== RESUME ITEMS ========== */
+    /* ========== EXPERIENCE ITEMS ========== */
     .item-title { font-weight: 700; font-size: 18px; }
     .item-sub   { color: var(--muted); font-style: italic; margin-bottom: 6px; }
     .item p     { margin: 0; }
@@ -396,7 +404,7 @@
     <a href="#about-me">About Me</a>
     <a href="#my-life">My Life</a>
     <a href="#engineering-projects">Engineering Projects</a>
-    <a href="#resume">Resume</a>
+    <a href="#experience">Experience</a>
   </nav>
 
   <!-- HEADER -->
@@ -658,14 +666,13 @@
           <div class="tags"><span>Gantry Design</span><span>Servo Control</span></div>
         </div>
       </details>
-    </section>
 
     <!-- ===== PROJECT 5 ===== -->
       <details class="card project-card">
         <summary>
-          <img src="project1.jpg" class="project-img" alt="Minature Wind Turbine">
+          <img src="wind turbine testing.jpg" class="project-img" alt="Miniature Wind Turbine">
           <div class="project-text">
-            <h3>Minature Wind Turbine</h3>
+            <h3>Miniature Wind Turbine</h3>
             <p>Researched and designed a wind turbine that transfers wind energy into electrical energy.</p>
           </div>
           <span class="expand-icon">+</span>
@@ -703,10 +710,11 @@
           <div class="tags"><span>SolidWorks</span><span>3D Printing</span><span>FEA</span><span>Mechanical Design Testing</span></div>
         </div>
       </details>
+      </section>
 
-    <!-- RESUME -->
-    <section id="resume">
-      <h2>Resume</h2>
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2>Experience</h2>
 
       <h3>Education</h3>
       <div class="card item">
@@ -720,6 +728,7 @@
       <!-- ===== JOB 1 ===== -->
       <details class="card project-card job-card">
         <summary>
+          <img src="niagara_logo.png" class="project-img company-logo" alt="Niagara Bottling logo">
           <div class="project-text">
             <div class="item-title">Product Engineer Intern — Niagara Bottling</div>
             <div class="item-sub">Summer 2026</div>
@@ -736,7 +745,7 @@
           <ul>
             <li>I worked along with many product engineers and their projects, helping them accelerate their timelines and building samples for customers.</li>
             <li>I assisted product engineers such as Tim Henry and Guilherme Lima in creating samples for Coca-Cola and managing the Product Specification Database (PSD), utilizing Niagara's supply 
-              and Copilot AI Agent. With my assistance, the Coca-Cola project was streamlined, and the PSD was organized and filtered for easy usage.<li>
+              and Copilot AI Agent. With my assistance, the Coca-Cola project was streamlined, and the PSD was organized and filtered for easy usage.</li>
             <li>I performed a 0.5L market study on competitors. I tested 20 different brands, testing preform weight, feel-stiffness, top-load, and water bottle weight. I leveraged Power BI
               to showcase all the data to executives and senior management in a friendly visual. At the end of my internship, I presented all my findings to the PE team and executives, which 
               provided valuable insights into future company decisions.</li>
@@ -755,6 +764,7 @@
       <!-- ===== JOB 2 ===== -->
       <details class="card project-card job-card">
         <summary>
+          <img src="abbott_logo.png" class="project-img company-logo" alt="Abbott logo">
           <div class="project-text">
             <div class="item-title">Manufacturing Engineer Intern — Abbott</div>
             <div class="item-sub">Spring 2026</div>
@@ -788,10 +798,11 @@
       <!-- ===== JOB 3 ===== -->
       <details class="card project-card job-card">
         <summary>
+          <img src="LensAI_logo.jpg" class="project-img company-logo" alt="LensAI logo">
           <div class="project-text">
             <div class="item-title">Product Design Engineer Intern — LensAI</div>
             <div class="item-sub">Fall 2024</div>
-            <p>Designed prototypes, performed tolerance analysis, and supported product development.</p>
+            <p>Designed a smart glasses frame and internal housings, integrated core electronics, and delivered an investor-ready prototype.</p>
           </div>
           <span class="expand-icon">+</span>
         </summary>
@@ -802,13 +813,19 @@
           </div>
           <h4>What I Did</h4>
           <ul>
-            <li>Write which prototypes you designed.</li>
-            <li>Write about the tolerance analysis.</li>
+            <li>I designed the smart glasses frame in SolidWorks, integrating the <strong>PCB, battery, ESP module, camera, and bone-conduction speaker</strong> into a compact, wearable form with tight 
+              internal fittings.</li>
+            <li>I engineered enclosures and internal routing channels for clean wiring and vibration isolation, while keeping the frame comfortable and ergonomic for all-day wear.</li>
+            <li>Since the prototype was fully 3D printed, I optimized the geometry for printability and ease of assembly, paying close attention to tolerances, aesthetics, and internal organization 
+              so it could be used in investor demos.</li>
+            <li>I collaborated closely with the electrical team to align mechanical constraints with user comfort and feedback from real-world testing.</li>
           </ul>
           <h4>Impact</h4>
-          <p>Write any results.</p>
+          <p>I delivered a <strong>fully functional smart glasses prototype</strong> that was clean, presentable, and ready for investor demonstrations, while consistently hitting tight design and prototyping 
+            deadlines. Optimizing the design for 3D printing enabled rapid iteration, and close collaboration with the electrical team helped LensAI showcase a polished product that reflects both technical 
+            rigor and user-centered design.</p>
           <h4>Tools &amp; Skills</h4>
-          <div class="tags"><span>Prototyping</span><span>Tolerance Analysis</span></div>
+          <div class="tags"><span>Prototyping</span><span>SolidWorks</span><span>Design For Manufacturing (DFM)</span><span>Tolerance Analysis</span></div>
         </div>
       </details>
 
