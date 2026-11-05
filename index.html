@@ -541,7 +541,12 @@
               single serving in 0.35 seconds for precise portion control. To counteract tension from a rubber band in the hatch mechanism, the servo was powered through the 5V pin for smooth operation.</li>
           </ul>
           <h4>Results</h4>
-          <p>Dispensed consistent portions within about 5% of the target weight.</p>
+          <ul>
+            <li>Built a working compact dispenser (10.5" × 6.5" × 6.5") that automatically released a single serving when a cup was placed underneath, demonstrated with coffee beans.</li>
+            <li>The servo dispensed each serving in <strong>0.35 seconds</strong>, and the rubber band counterbalance let it open the hatch reliably without straining the motor.</li>
+            <li>Two ESP32s communicated wirelessly over ESP-NOW, so sensor data triggered the dispenser and LEDs in real time.</li>
+            <li>The ultrasonic sensor tracked snack levels and switched the LEDs correctly: green (under 10 cm, full), yellow (10–15 cm, half), and red (over 15 cm, refill needed).</li>
+          </ul>
           <h4>Problems Faced</h4>
           <ul>
             <li><strong>Problem:</strong> Component issues led to a weak light sensor that required a flashlight. <strong>Solution:</strong> We added a cutout to let more light into the housing to accommodate 
@@ -550,7 +555,7 @@
               balance the load across the axle</li>
           </ul>
           <h4>Tools &amp; Skills</h4>
-          <div class="tags"><span>Sensors</span><span>Actuators</span><span>IoT</span></div>
+          <div class="tags"><span>Sensors</span><span>Actuators</span><span>Internet of Things</span></div>
         </div>
       </details>
 
@@ -566,9 +571,9 @@
         </summary>
         <div class="project-details">
           <div class="photo-grid">
-            <img src="lidar-mount-1.jpg" alt="LiDAR mount photo 1">
-            <img src="lidar-mount-2.jpg" alt="LiDAR mount photo 2">
-            <img src="lidar-mount-3.jpg" alt="LiDAR mount photo 3">
+            <img src="lidar iphone mount exploded view.png" alt="LiDAR mount exploded view">
+            <img src="lidar progression 1.jpeg" alt="LiDAR mount progess photo">
+            <img src="lidar phone mount image.jpeg" alt="LiDAR mount final design">
           </div>
           <h4>Overview</h4>
           <p>While LiDAR-equipped smartphones offer powerful 3D scanning capabilities, handheld use often leads to motion inconsistencies, incomplete coverage, and user fatigue. The LiDAR iPhone Mount solves 
@@ -585,14 +590,20 @@
               durability and motion accuracy.</li>
           </ul>
           <h4>Results</h4>
-          <p>___</p>
+          <ul>
+            <li>Produced a stable mount that enabled smooth, uninterrupted 360° scans of small organic objects.</li>
+            <li>The press-fit bearing sleeve gave smooth rotation with no wobble, and the counterweight kept the arm balanced throughout each scan.</li>
+            <li>Compared to handheld scanning, scans showed more complete coverage, and each scan took about 3 revolutions in 15 seconds.</li>
+          </ul>
           <h4>Problems Faced</h4>
           <ul>
-            <li><strong>Problem:</strong> The main challenge was software - Scaniverse was the best free app we found, but it rounds measurements and struggles with depth accuracy. <strong>Solution:</strong> Write how you fixed it.</li>
-            <li><strong>Problem:</strong> Write what went wrong. <strong>Solution:</strong> Write how you fixed it.</li>
+            <li><strong>Problem:</strong> The main challenge was software - Scaniverse was the best free app we found, but it rounds measurements and struggles with depth accuracy. <strong>Solution:</strong> This design has 
+              proven to improve scans, but there needs to be software improvements for more accurate scans.</li>
+            <li><strong>Problem:</strong> The bearing sleeve failed the initial press fit run, but I slowly refined the sleeve for a perfect fit <strong>Solution:</strong> Mechanically, achieving the correct press fit for the 
+              bearing sleeve required multiple milling passes to fine-tune the tolerance.</li>
           </ul>
           <h4>Tools &amp; Skills</h4>
-          <div class="tags"><span>CNC</span><span>Waterjet</span><span>3D Printing</span></div>
+          <div class="tags"><span>CNC</span><span>Waterjet</span><span>3D Printing</span><span>Lathe</span></div>
         </div>
       </details>
 
@@ -602,15 +613,15 @@
           <img src="lily pad physical gantry.jpeg" class="project-img" alt="Arcade Machine">
           <div class="project-text">
             <h3>Arcade Machine</h3>
-            <p>Designed a gantry system with 5 belts and 4 rails; programmed servo motors for motion control.</p>
+            <p>Designed a gantry system, arcade game, with 5 belts and 4 rails; programmed servo motors for motion control.</p>
           </div>
           <span class="expand-icon">+</span>
         </summary>
         <div class="project-details">
           <div class="photo-grid">
-            <img src="arcade-1.jpg" alt="Arcade machine photo 1">
-            <img src="arcade-2.jpg" alt="Arcade machine photo 2">
-            <img src="arcade-3.jpg" alt="Arcade machine photo 3">
+            <img src="lily pad housing CAD.png" alt="Arcade machine housing CAD">
+            <img src="lily pad bottom pads, and wires.jpeg" alt="Lily pad targets motion system">
+            <img src="plunge photo.jpeg" alt="Arcade machine physical housing">
           </div>
           <h4>Overview</h4>
           <p>The Lily Pad Plunge’s purpose is to bring the old-time arcade experience into your home. The game will have up, down, left, and right controls along with a drop button. The machine will have a string 
@@ -627,17 +638,71 @@
               between users. Finally, we painted the game, made final adjustments, and presented it to our club — where it now lives as a daily-use arcade piece.</li>
           </ul>
           <h4>Results</h4>
-          <p>___</p>
+          <ul>
+            <li>Delivered a fully working arcade game with a 5-belt, 4-rail gantry and servo-controlled motion.</li>
+            <li>Achieved smooth and repeatable gantry travel across the full play area after fixing the motor issue.</li>
+            <li>Played 25+ times by members of the house in the first week, with no major breakdowns.</li>
+          </ul>
+          <h4>Reflection</h4>
+          <p>What began as a simple idea to bring arcade nostalgia into our fraternity house became a collaborative project that sparked excitement and connection. Setbacks like unreliable motors, material issues, and tight tolerances 
+            pushed us to adapt and grow. Beyond the engineering, the game turned competition into camaraderie. I'm proud not just of the final product, but of the teamwork behind it.</p>
           <h4>Problems Faced</h4>
           <ul>
-            <li><strong>Problem:</strong> Write what went wrong. <strong>Solution:</strong> Write how you fixed it.</li>
-            <li><strong>Problem:</strong> Write what went wrong. <strong>Solution:</strong> Write how you fixed it.</li>
+            <li><strong>Problem:</strong> The motors and belts on the gantry system lacked stability. <strong>Solution:</strong> I added a shelf to reinforce the gantry system.</li>
+            <li><strong>Problem:</strong> We originally had the rails made of wood or PLA, but we learned that they have a higher coefficient of friction, which would cause the motors to work harder and potentially lead to stick-slip 
+              motion. <strong>Solution:</strong> I replaced the PLA hollow frames with acrylic to reduce friction and improve movement.</li>
+            <li><strong>Problem:</strong> The motors were not spinning at different speeds for the lily pads, which is essential for creating a unique game. <strong>Solution:</strong> Due to inconsistent motor performance, we tested 
+              three alternatives and refined our code to optimize both the gantry and bottom track systems.</li>
           </ul>
           <h4>Tools &amp; Skills</h4>
           <div class="tags"><span>Gantry Design</span><span>Servo Control</span></div>
         </div>
       </details>
     </section>
+
+    <!-- ===== PROJECT 5 ===== -->
+      <details class="card project-card">
+        <summary>
+          <img src="project1.jpg" class="project-img" alt="Minature Wind Turbine">
+          <div class="project-text">
+            <h3>Minature Wind Turbine</h3>
+            <p>Researched and designed a wind turbine that transfers wind energy into electrical energy.</p>
+          </div>
+          <span class="expand-icon">+</span>
+        </summary>
+        <div class="project-details">
+          <div class="photo-grid">
+            <img src="wind turbine blade CAD.png" alt="Wind turbine blade CAD">
+            <img src="wind turbine FEA 3.png" alt="Wind turbine FEA test">
+            <img src="wind turbine spinning.jpg" alt="Wind turbine spinnning">
+          </div>
+          <h4>Overview</h4>
+          <p>This miniature wind turbine was designed to explore sustainable energy generation at a small scale. It serves as a hands-on demonstration of aerodynamic principles, mechanical design, and 
+            energy conversion, making it ideal for educational use and prototyping. By simulating real-world wind energy systems, the project highlights how renewable technologies can be adapted for low-power 
+            applications and encourages deeper understanding of efficiency, scalability, and environmental impact.</p>
+          <h4>What I Did</h4>
+          <ul>
+            <li>I designed a compact, stylized wind turbine with a 16-inch height and a 5-inch base. The 2-inch blades were angled at 12° and mounted to a DC motor using a clearance fit for smooth rotation. 
+              To validate structural integrity under high wind conditions, I ran FEA simulations in SolidWorks.</li>
+            <li>The final design was 3D printed using ABS filament on an FDM printer with 70% infill, ensuring durability and precision.</li>
+          </ul>
+          <h4>Results</h4>
+          <ul>
+            <li>Built and tested a working 16-inch turbine that generated a <strong>peak power of 2.5 W</strong> at 25 mph wind speed.</li>
+            <li>Collected consistent voltage, current, power, and RPM data across <strong>12 trials</strong>, comparing both blade orientations to find the more efficient setup.</li>
+            <li>The tower held up to <strong>1 kg of load</strong> in the stress test with a measured stiffness of <strong>5.64 N/mm</strong>, confirming the structure could withstand high-wind conditions.</li>
+            <li>The SolidWorks FEA results closely matched the physical deflection test, validating the simulation.</li>
+          </ul>
+          <h4>Problems Faced</h4>
+          <ul>
+            <li><strong>Problem:</strong> The tower was too tall for our 3D printer, and I needed to redesign the tower into two parts. <strong>Solution:</strong> So we split the CAD model into two interlocking 
+              parts to maintain structural integrity and simplify assembly.</li>
+            <li><strong>Problem:</strong> Write what went wrong. <strong>Solution:</strong> Due to limited printer precision, we adjusted tolerances and simplified design features to ensure clean prints and reliable fits.</li>
+          </ul>
+          <h4>Tools &amp; Skills</h4>
+          <div class="tags"><span>SolidWorks</span><span>3D Printing</span><span>FEA</span><span>Mechanical Design Testing</span></div>
+        </div>
+      </details>
 
     <!-- RESUME -->
     <section id="resume">
@@ -676,7 +741,7 @@
           <h4>Impact</h4>
           <p>Write any results (time saved, decisions your work informed, etc.).</p>
           <h4>Tools &amp; Skills</h4>
-          <div class="tags"><span>Product Development</span><span>Market Research</span></div>
+          <div class="tags"><span>Product Development</span><span>AI Agent Development</span><span>Product Management</span><span>Market Research</span></div>
         </div>
       </details>
 
